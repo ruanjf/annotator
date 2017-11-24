@@ -24,8 +24,9 @@ function escapeHtml(string) {
 
 // I18N
 var gettext = (function () {
-    if (typeof global.Gettext === 'function') {
-        var _gettext = new global.Gettext({domain: "annotator"});
+    var Gettext = global.AnnotatorGettext || global.Gettext
+    if (typeof Gettext === 'function') {
+        var _gettext = new Gettext({domain: "annotator"});
         return function (msgid) { return _gettext.gettext(msgid); };
     }
 
