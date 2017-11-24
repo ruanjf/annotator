@@ -338,7 +338,7 @@ var Viewer = exports.Viewer = Widget.extend({
     //
     // Returns nothing.
     _onDeleteClick: function (event) {
-        if (window.confirm(_t('Delete this annotation?'))) {
+        if (this.options.confirmBeforeDelete === false || window.confirm(_t('Delete this annotation?'))) {
             var item = $(event.target)
                 .parents('.annotator-annotation')
                 .data('annotation');
@@ -498,7 +498,10 @@ Viewer.options = {
 
     // Callback, called when the user clicks the delete button for an
     // annotation.
-    onDelete: function () {}
+    onDelete: function () {},
+
+    // confirm before delete annotation
+    confirmBeforeDelete: true
 };
 
 
