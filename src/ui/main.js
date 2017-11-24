@@ -214,6 +214,7 @@ function main(options) {
     options.adderExtensions = options.adderExtensions || [];
     options.editorExtensions = options.editorExtensions || [];
     options.viewerExtensions = options.viewerExtensions || [];
+    options.textselectorOptions = options.textselectorOptions || {};
 
     // Local helpers
     var makeAnnotation = annotationFactory(options.element, '.annotator-hl');
@@ -245,6 +246,7 @@ function main(options) {
         s.highlighter = new highlighter.Highlighter(options.element);
 
         s.textselector = new textselector.TextSelector(options.element, {
+            isDisable: options.textselectorOptions.isDisable,
             onSelection: function (ranges, event) {
                 if (ranges.length > 0) {
                     var annotation = makeAnnotation(ranges);
