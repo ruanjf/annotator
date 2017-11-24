@@ -32,7 +32,7 @@ function TextSelector(element, options) {
         var self = this;
         this.document = this.element.ownerDocument;
 
-        $(this.document.body)
+        $(this.options.selectOnBody === false ? this.element : this.document.body)
             .on("mouseup." + TEXTSELECTOR_NS, function (e) {
                 self._checkForEndSelection(e);
             });
@@ -144,6 +144,8 @@ TextSelector.prototype._checkForEndSelection = function (event) {
 
 // Configuration options
 TextSelector.options = {
+    // bind event on body
+    selectOnBody: true,
     // Callback, called when the user makes a selection.
     // Receives the list of selected ranges (may be empty) and  the DOM Event
     // that was detected as a selection.
