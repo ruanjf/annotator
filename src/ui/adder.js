@@ -136,6 +136,9 @@ var Adder = Widget.extend({
 
         // Create a new annotation
         if (this.annotation !== null && typeof this.onCreate === 'function') {
+            if (typeof this.options.beforeCreate === 'function') {
+                this.options.beforeCreate(this.annotation, event)
+            }
             this.onCreate(this.annotation, event);
         }
     }
@@ -149,6 +152,8 @@ Adder.template = [
 
 // Configuration options
 Adder.options = {
+    // Callback, called before create
+    beforeCreate: null,
     // Callback, called when the user clicks the adder when an
     // annotation is loaded.
     onCreate: null
