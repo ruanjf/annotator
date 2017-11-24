@@ -215,6 +215,7 @@ function main(options) {
     options.editorExtensions = options.editorExtensions || [];
     options.viewerExtensions = options.viewerExtensions || [];
     options.textselectorOptions = options.textselectorOptions || {};
+    options.adderOptions = options.adderOptions || {};
 
     // Local helpers
     var makeAnnotation = annotationFactory(options.element, '.annotator-hl');
@@ -229,6 +230,7 @@ function main(options) {
         var authz = app.registry.getUtility('authorizationPolicy');
 
         s.adder = new adder.Adder({
+            beforeCreate: options.adderOptions.beforeCreate,
             extensions: options.adderExtensions,
             onCreate: function (ann) {
                 app.annotations.create(ann);
