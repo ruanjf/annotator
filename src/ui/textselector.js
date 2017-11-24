@@ -108,6 +108,10 @@ TextSelector.prototype.captureDocumentSelection = function () {
 //
 // Returns nothing.
 TextSelector.prototype._checkForEndSelection = function (event) {
+    if (this.options.disable === true) {
+        return;
+    }
+
     var self = this;
 
     var _nullSelection = function () {
@@ -144,6 +148,8 @@ TextSelector.prototype._checkForEndSelection = function (event) {
 
 // Configuration options
 TextSelector.options = {
+    // disable TextSelector
+    disable: false,
     // bind event on body
     selectOnBody: true,
     // Callback, called when the user makes a selection.
