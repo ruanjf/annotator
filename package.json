@@ -1,6 +1,6 @@
 {
   "name": "annotator2",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "扩展了一些功能，Annotation for the web. Select text, images, or (nearly) anything else, and add your notes.",
   "repository": {
     "type": "git",
