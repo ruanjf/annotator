@@ -211,6 +211,7 @@ function main(options) {
     }
 
     options.element = options.element || global.document.body;
+    options.adderExtensions = options.adderExtensions || [];
     options.editorExtensions = options.editorExtensions || [];
     options.viewerExtensions = options.viewerExtensions || [];
 
@@ -227,6 +228,7 @@ function main(options) {
         var authz = app.registry.getUtility('authorizationPolicy');
 
         s.adder = new adder.Adder({
+            extensions: options.adderExtensions,
             onCreate: function (ann) {
                 app.annotations.create(ann);
             }
